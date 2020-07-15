@@ -2,7 +2,7 @@ name: config
 api:
   Seckey: 
 
-  Github_api_token: ""
+  Github_api_token: 
   Censys_api_id: 
   Censys_api_secret: 
 
