@@ -1,7 +1,3 @@
----
-title: SafeScan
----
-
 # 疫情期间在家无事写了一个小玩具
 
 ## Options 参数
