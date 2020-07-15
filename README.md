@@ -5,7 +5,7 @@
 
 ## 子域名扫描
 ```cmd
-	./main.exe -url "url"
+./SafeScan.exe -url "url"
 ```
 `` 如需要收集更多信息，请于项目根目录下config.yml修改API相关KEY ``
 `` 扫描速度较慢(算法太垃圾，如果有兴趣的师傅可以一起来交流 --- ``
@@ -13,7 +13,7 @@
 
 ## github监控和先知文章推送
 ```cmd
-	./main.exe -Auto
+./SafeScan.exe -Auto
 ```
 ![](./images/1594801040621.png)
 `` 注意此功能需要在项目根目录的config.yml修改gmail相关信息 ``
