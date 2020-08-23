@@ -187,6 +187,7 @@
 /api/v2/files/211
 /api/v2/files/20493
 /api/v2
+/admin2
 /api/js?sensor=true
 /api/js?sensor=false
 /api/js?key=AIzaSyA2G9ttHY7EinwI8Wca1DbhUp5yB9SeAEU
