@@ -1,11 +1,4 @@
----
-title: "关于对扫描器的一些想法及实现"
-date: 2020-08-23T15:55:19+08:00
-draft: true
----
-
 # [模板参考至Xray](https://docs.xray.cool/#/guide/poc)
-# [github地址](https://github.com/lovetrap)
 
 ### POC检测模板解析
 #### yaml -> sets -> Rules
