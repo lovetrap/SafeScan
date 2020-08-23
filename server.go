@@ -19,6 +19,9 @@ func main() {
 	router.GET("/admin", func(c *gin.Context) {
 		c.String(200,"账户")
 	})
+	router.GET("/admin2", func(c *gin.Context) {
+		c.String(200, "密码")
+	})
 	_ = router.Run(":8080")
 
 }
