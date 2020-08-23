@@ -47,6 +47,10 @@ wordlist: .\wordlist\test.txt
 search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码))
 
 ```
+#### 下面是解析后的伪代码
+```
+if regexp(search, html) != nil ==> 输出信息
+
 #### 代码执行假想结构
 ```
 {{ 默认import `safeCodeToll` }}
@@ -58,10 +62,6 @@ Regexp(reg string) ==>[][]string
 ...
 }
 ```
-#### 下面是解析后的伪代码
-```
-if regexp(search, html) != nil ==> 输出信息
-
 ```
 ### 下面是我对上面实现的demo
  ![](/img/001.png)
