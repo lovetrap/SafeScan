@@ -4,8 +4,8 @@ date: 2020-08-23T15:55:19+08:00
 draft: true
 ---
 
-[模板参考至Xray](https://docs.xray.cool/#/guide/poc)
-[github地址](https://github.com/lovetrap)
+# [模板参考至Xray](https://docs.xray.cool/#/guide/poc)
+# [github地址](https://github.com/lovetrap)
 
 ### POC检测模板解析
 #### yaml -> sets -> Rules
@@ -60,4 +60,4 @@ if regexp(search, html) != nil ==> 输出信息
 
 ```
 ### 下面是我对上面实现的demo
- ![](/img/004/001.png)
+ ![](/img/001.png)
