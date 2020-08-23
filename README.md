@@ -47,6 +47,17 @@ wordlist: .\wordlist\test.txt
 search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码))
 
 ```
+#### 代码执行假想结构
+```
+{{ 默认import `safeCodeToll` }}
+=>> interface{ 
+GetUrl(url string) ==> response 
+GetTitle(html string) ==> string
+DomFindText(selector string, attr string) ==> []string
+Regexp(reg string) ==>[][]string
+...
+}
+```
 #### 下面是解析后的伪代码
 ```
 if regexp(search, html) != nil ==> 输出信息
