@@ -1,0 +1,3 @@
+name: dirscan-yaml-backstage
+wordlist: .\wordlist\test.txt
+search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码))

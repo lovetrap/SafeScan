@@ -1,42 +1,63 @@
 ---
-title: SafeScan
+title: "关于对扫描器的一些想法及实现"
+date: 2020-08-23T15:55:19+08:00
+draft: true
 ---
 
-# 疫情期间在家无事写了一个小玩具
+[模板参考至Xray](https://docs.xray.cool/#/guide/poc)
+[github地址](https://github.com/lovetrap)
 
-## Options 参数
-![](./images/1594800780064.png)
-
-## 子域名扫描
-```cmd
-	./main.exe -url "url"
+### POC检测模板解析
+#### yaml -> sets -> Rules
 ```
-`` 如需要收集更多信息，请于项目根目录下config.yml修改API相关KEY ``
-`` 扫描速度较慢(算法太垃圾，如果有兴趣的师傅可以一起来交流 --- ``
-![](./images/1594803225819.png)
+{{ set golbal var}} ==> regexp replace ==> value 
+==> {{.*?}} ==> value ==> map[value]
 
-## github监控和先知文章推送
-```cmd
-	./main.exe -Auto
+==> {{{r1}} * {{r2}}} ==> {.*} ==> 同上 ==> result * result
 ```
-![](./images/1594801040621.png)
-`` 注意此功能需要在项目根目录的config.yml修改gmail相关信息 ``
 
-## 后续功能看情况再添加 （各功能模块没进行兼容，所以只开启两个功能模块， 懒--__--
+#### yaml -> expression
 
+```
+/* 关于解析cel伪代码，这是我的实现方法 */
+{
+response.body ==> []byte
+response.headers ==> map
+response.content_type ==> []string
+} ==> set
 
-### 待兼容功能模块
+{
+response.body.bcontains(b"??")
+==> bcontains(b"??", response.body) ==> bool
+}
 
-	* [ ] 漏洞扫描 
-	* [ ] POC框架
-	* [ ] 子域名自动监控系统
-	* [ ] ip资产收集（端口扫描，nmap模块，zoomeye， shodan， fofa
-	* [ ] 主动扫描
+{
+response.headers ==> Type ==> decls.Map
+response.headers["??"] == "??" ==> bool
 
-### 待完成功能模块
-	* [ ] 厂商漏洞监控
-	* [ ] WEB界面
-	* [ ] 漏洞库监控
-	* [ ] 指纹检测
-	* [ ] bypass
-	* [ ] fuzzing
+response.headers["??"].contains("??")
+==> contains("??", response.headers) ==> bool
+}
+
+{
+"??".bmatches(response.body)
+==> bmatches(response.body, "??") ==> bool
+}
+```
+
+### 对于模板解析我增加了一些自定义检测模板
+#### 例如对目录进行扫描，探测是否有信息泄露或者其他
+```
+[module demo]
+name: dirscan-yaml-backstage
+wordlist: .\wordlist\test.txt
+search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码))
+
+```
+#### 下面是解析后的伪代码
+```
+if regexp(search, html) != nil ==> 输出信息
+
+```
+### 下面是我对上面实现的demo
+ ![](/img/004/001.png)

