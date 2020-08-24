@@ -55,7 +55,7 @@ if regexp(search, html) != nil ==> 输出信息
 ```
 #### 代码执行假想结构
 ```
-{{ 默认import `safeCodeToll` }}
+{{ 默认import `RunCodeTool` }}
 =>> interface{ 
 GetUrl(url string) ==> response 
 GetTitle(html string) ==> string
