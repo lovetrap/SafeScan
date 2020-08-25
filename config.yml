@@ -1,1 +1,2 @@
-ChromePath: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+//填写chrome的路径 或者chromium的路径
+ChromePath: D:\chrome\chrome.exe
