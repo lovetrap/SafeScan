@@ -65,6 +65,6 @@ Regexp(reg string) ==>[][]string
 }
 ```
 ### 下面是我对上面实现的demo
- ![](/img/001.png)
+ ![](./img/001.png)
 
 ## DNSlog函数暂时未兼容
