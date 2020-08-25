@@ -1,0 +1,10 @@
+name: poc-yaml-1test
+set:
+  r1: randomLowercase(6)
+rules:
+  - method: GET
+    path: /login?user={{r1}}
+    expression: >
+      response.status == 200 &&
+      "get_session".bmatches(bytes(response.headers["Set-Cookie"])) &&
+      response.body.bcontains(b"cookie")
