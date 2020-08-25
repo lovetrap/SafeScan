@@ -67,4 +67,4 @@ Regexp(reg string) ==>[][]string
 ### 下面是我对上面实现的demo
  ![](/img/001.png)
 
-## 部分函数未兼容和部分set无法顺序进行解析
+## DNSlog函数暂时未兼容
