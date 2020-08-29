@@ -1,45 +1,27 @@
-# [模板参考至Xray](https://docs.xray.cool/#/guide/poc)
+# 关于POC-Yaml模板函数（有两种写法）
 
-### POC检测模板解析
-#### yaml -> sets -> Rules
-```
-{{ set golbal var}} ==> regexp replace ==> value 
-==> {{.*?}} ==> value ==> map[value]
+#### [第一种可参考Xray](https://docs.xray.cool/#/guide/poc)
 
-==> {{{r1}} * {{r2}}} ==> {.*} ==> 同上 ==> result * result
-```
-
-#### yaml -> expression
+## 第二种
 
 ```
-/* 关于解析cel伪代码，这是我的实现方法 */
-{
-response.body ==> []byte
-response.headers ==> map
-response.content_type ==> []string
-} ==> set
+response.status -> old
 
-{
-response.body.bcontains(b"??")
-==> bcontains(b"??", response.body) ==> bool
-}
+response.body.bcontains(b"??") 
+==> bcontains(b"??", response.body)
 
-{
-response.headers ==> Type ==> decls.Map
-response.headers["??"] == "??" ==> bool
+response.headers["??"] == "??" ==> old
 
 response.headers["??"].contains("??")
-==> contains("??", response.headers) ==> bool
-}
+==> contains("??", response.headers["??"])
 
-{
 "??".bmatches(response.body)
-==> bmatches(response.body, "??") ==> bool
-}
+==> bmatches(response.body, "??")
+
 ```
 
-### 对于模板解析我增加了一些自定义检测模板，实现自定义扫描，后面会增加代码执行模板
-#### 例如对目录进行扫描，探测是否有信息泄露或者其他
+### 对于模板解析我增加了一些自定义检测模板，实现自定义扫描，~~后面会增加代码执行模板~~
+#### 例如对目录进行扫描，探测是否有信息泄露或者其他（默认请求码为200）
 ```
 [module demo]
 name: dirscan-yaml-backstage
@@ -48,23 +30,18 @@ search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码)
 
 ```
 
-#### 下面是解析后的伪代码
-```
-if regexp(search, html) != nil ==> 输出信息
-
-```
-#### 代码执行假想结构
-```
-{{ 默认import `RunCodeTool` }}
-=>> interface{ 
-GetUrl(url string) ==> response 
-GetTitle(html string) ==> string
-DomFindText(selector string, attr string) ==> []string
-Regexp(reg string) ==>[][]string
-...
-}
-```
-### 下面是我对上面实现的demo
+### 下面是我对测试服务器的扫描
  ![](./img/001.png)
 
-## DNSlog函数暂时未兼容
+## 框架扫描
+
+- [x] fastjson检测
+- [ ] thinkphp
+- [x] struts2
+
+# 通用扫描
+
+- [ ] sql注入检测
+- [ ] 命令/代码注入检测
+- [ ] 反射性xss检测
+- [ ] 目录枚举检测
