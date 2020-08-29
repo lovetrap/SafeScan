@@ -1,0 +1,3 @@
+name: dirscan-yaml-api
+wordlist: .\wordlist\api.txt
+status: 200
