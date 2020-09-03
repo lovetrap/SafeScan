@@ -62,4 +62,4 @@ regexp: (?P<param>[\w-]+)=(?P<value>[\w%]*)
 http://127.0.0.1:8080/?sid=1&id=2 => sid=1 id=2 => sid=$$ id=$$
 ```
 
-![002](D:\github\Scan\002.png)
+![002](./img/002.png)
