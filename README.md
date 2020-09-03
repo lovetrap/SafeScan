@@ -1,4 +1,4 @@
-# 关于POC-Yaml模板函数（有两种写法）
+# 关于POC-Yaml模板函数（有两种写法，可混写）
 
 #### [第一种可参考Xray](https://docs.xray.cool/#/guide/poc)
 
@@ -43,20 +43,23 @@ search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码)
 
 ## 通用扫描
 
-- [ ] sql注入检测
+- [x] sql注入检测
 - [ ] 命令/代码注入检测
-- [ ] 反射性xss检测
-- [ ] 目录枚举检测
+- [ ] 反射xss检测
 
-# 关于Fuzzing的想法
+# 关于Fuzzing
 
 ## module demo
 
 ```yaml
 name: fuzz-params
-rule: /{{param}}=${value}$/
+rule: /{{param}}=$value$/ ** 匹配规则 **
+fuzzlist: **可选参数 fuzz字典，若为空，则为默认fuzz规则**
 regexp: (?P<param>[\w-]+)=(?P<value>[\w%]*)
 ```
 
-{{**}} 括起来的就是需要fuzz的字段
+```
+http://127.0.0.1:8080/?sid=1&id=2 => sid=1 id=2 => sid=$$ id=$$
+```
 
+![002](D:\github\Scan\002.png)

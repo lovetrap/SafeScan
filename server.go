@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/sessions"
-// 	"log"
+	"strings"
 )
 /*
 	测试服务器，附带session机制
@@ -14,12 +14,15 @@ func main() {
 
 	newSession()
 	router := gin.Default()
-	// var num int
+
 
 	router.GET("/", func(c *gin.Context) {
-		// num++
-		c.String(200, "sid= %s\nid= %s\n", c.Query("sid"), c.Query("id"))
-		// log.Printf("\n[%d 次请求]\nsid= %s\nid= %s\n", num, c.Query("sid"), c.Query("id"))
+		
+		if strings.Contains(c.Query("id"), "$") {
+			c.String(404, "Error")
+		}else {
+			c.String(200, "sid= %s\nid= %s\n", c.Query("sid"), c.Query("id"))
+		}
 	})
 	router.GET("/admin", func(c *gin.Context) {
 		c.String(200,"账户")
