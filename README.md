@@ -55,7 +55,7 @@ search: (?P<username>(账[户号]|管理员账[户号]|username|password|密码)
 name: fuzz-params
 rule: /{{param}}=$value$/ ** 匹配规则 **
 fuzzlist: **可选参数 fuzz字典，若为空，则为默认fuzz规则**
-regexp: (?P<param>[\w-]+)=(?P<value>[\w%]*)
+search: (?P<param>[\w-]+)=(?P<value>[\w%]*)
 ```
 
 ```
@@ -63,3 +63,16 @@ http://127.0.0.1:8080/?sid=1&id=2 => sid=1 id=2 => sid=$$ id=$$
 ```
 
 ![002](./img/002.png)
+
+# 关于bypass
+
+## 本工具自带了3个sql注入bypass脚本，~~可自行定义~~, 暂时仅调用空格转换,待优化
+
+```python
+(1) and -> anandd -> def andDouble()
+(2) 空格 -> {"%09", "%0A", "%0C", "%0D", "%0B"} -> def spaceToMySqlBlank()
+(3) # -> and [SYMBOL]rand[SYMBOL]=[SYMBOL]rand -> def noteToInference()
+使用
+e.g.
+bypass: spaceToMySqlBlank
+```
