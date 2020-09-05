@@ -1,3 +1,7 @@
+# 扫描流程
+
+![](./img/流程.png)
+
 # 关于POC-Yaml模板函数（有两种写法，可混写）
 
 #### [第一种可参考Xray](https://docs.xray.cool/#/guide/poc)
