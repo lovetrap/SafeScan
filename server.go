@@ -14,15 +14,22 @@ func main() {
 
 	newSession()
 	router := gin.Default()
-
+	router.LoadHTMLGlob("*.html")
 
 	router.GET("/", func(c *gin.Context) {
 		
+		if c.Query("sid") == "aa" && c.Query("id") == "bb" {
+			c.HTML(200,"location.html", gin.H{
+				"href":"/login",
+			})
+		}
+
 		if strings.Contains(c.Query("id"), "$") {
 			c.String(404, "Error")
 		}else {
 			c.String(200, "sid= %s\nid= %s\n", c.Query("sid"), c.Query("id"))
 		}
+
 	})
 	router.GET("/admin", func(c *gin.Context) {
 		c.String(200,"账户")
